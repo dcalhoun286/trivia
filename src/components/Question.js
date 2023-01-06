@@ -33,6 +33,7 @@ class Question extends React.Component {
         <div>
           {this.answers.map((answer) => (
             <AnswerButton
+              handleGuess={this.handleGuess}
               key={answer}
               answer={answer}
             />
