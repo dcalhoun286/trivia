@@ -13,6 +13,12 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch(TRIVIA_API)
+      .then(res => res.json())
+      .then(data => this.setState({ question: data.results[0] })) 
+  }
+
   render() {
     return (
       <div className='container l:w-50 p-5'>
