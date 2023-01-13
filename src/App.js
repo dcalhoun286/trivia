@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Question } from './components';
+import { Button } from 'bootstrap';
 
 const category = '';
 const TRIVIA_API = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=easy`;
@@ -30,6 +31,9 @@ class App extends Component {
         <hr />
         <div>
           {this.state.question && <Question question={this.state.question} />}
+        </div>
+        <div>
+          <button type='button' className='btn btn-primary'>Next Question</button>
         </div>
       </div>
     );
