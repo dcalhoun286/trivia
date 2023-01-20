@@ -1,6 +1,9 @@
 import React from 'react';
-import { AnswerButton } from './';
+import { AnswerButton } from './AnswerButton';
 import { decodeHTML, randomizeArray } from '../lib';
+
+const category = '';
+const TRIVIA_API = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=easy`;
 
 class Question extends React.Component {
   constructor(props) {
