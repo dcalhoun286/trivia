@@ -24,6 +24,19 @@ class Question extends React.Component {
     this.setState({ guessed: true, guess: answer});
   };
 
+  handleNextQuestion = () => {
+    this.setState({ guessed: false, guess: '' })
+    fetch(TRIVIA_API)
+      .then(res => res.json())
+      .then(data => {
+        this.props.updateState(data.results[0])
+        this.answers = randomizeArray([
+          ...data.results[0].incorrect_answers,
+          data.results[0].correct_answer
+        ])
+      })
+  }
+
   render() {
     return (
       <div className='card p-2 mb-4'>
@@ -56,6 +69,10 @@ class Question extends React.Component {
           )
           : null
         }
+
+        <div>
+          <button type='button' className='btn btn-primary' onClick={this.handleNextQuestion}>Next Question</button>
+        </div>
       </div>
     );
   }

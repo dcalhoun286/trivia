@@ -20,10 +20,8 @@ class App extends Component {
       .then(data => this.setState({ question: data.results[0] })) 
   }
 
-  handleNextQuestion = () => {
-    fetch(TRIVIA_API)
-      .then(res => res.json())
-      .then(data => this.setState({ question: data.results[0] })) 
+  updateStateHandler = (newQuestion) => {
+    this.setState({ question: newQuestion });
   }
 
   render() {
@@ -36,10 +34,12 @@ class App extends Component {
         </h2>
         <hr />
         <div>
-          {this.state.question && <Question question={this.state.question} />}
-        </div>
-        <div>
-          <button type='button' className='btn btn-primary' onClick={this.handleNextQuestion}>Next Question</button>
+          {this.state.question && (
+            <Question
+              question={this.state.question}
+              updateState={this.updateStateHandler}
+            />
+          )}
         </div>
       </div>
     );
