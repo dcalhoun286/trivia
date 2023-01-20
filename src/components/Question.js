@@ -18,9 +18,6 @@ class Question extends React.Component {
   }
 
   handleGuess = (answer) => {
-    // set guessed to true, and set guess to the selected answer
-    // e.preventDefault();
-    // console.log(e['target']['innerText']);
     this.setState({ guessed: true, guess: answer});
   };
 
