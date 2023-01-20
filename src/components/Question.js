@@ -30,19 +30,7 @@ class Question extends React.Component {
         </h4>
 
         <div>
-          {
-            this.state.guessed
-            ? (
-              <React.Fragment>
-                {
-                  this.state.guess === this.props.question.correct_answer
-                  ? <h3>Correct!</h3>
-                  : <h3>Incorrect! The correct answer is {this.props.question.correct_answer}</h3>
-                }
-              </React.Fragment>
-            )
-            : null
-          }
+
           {this.answers.map((answer) => (
             <AnswerButton
               handleGuess={()=>this.handleGuess(answer)}
@@ -52,7 +40,19 @@ class Question extends React.Component {
           ))}
         </div>
 
-        {/* Dynamically render correct/incorrect here! */}
+        {
+          this.state.guessed
+          ? (
+            <React.Fragment>
+              {
+                this.state.guess === this.props.question.correct_answer
+                ? <h3>Correct!</h3>
+                : <h3>Incorrect! The correct answer is {this.props.question.correct_answer}</h3>
+              }
+            </React.Fragment>
+          )
+          : null
+        }
       </div>
     );
   }
