@@ -17,11 +17,11 @@ class Question extends React.Component {
     ]);
   }
 
-  handleGuess = (e) => {
+  handleGuess = (answer) => {
     // set guessed to true, and set guess to the selected answer
-    e.preventDefault();
-    console.log(e['target']['innerText']);
-    this.setState({ guessed: true, guess: e['target']['innerText']});
+    // e.preventDefault();
+    // console.log(e['target']['innerText']);
+    this.setState({ guessed: true, guess: answer});
   };
 
   render() {
@@ -48,7 +48,7 @@ class Question extends React.Component {
           }
           {this.answers.map((answer) => (
             <AnswerButton
-              handleGuess={this.handleGuess}
+              handleGuess={()=>this.handleGuess(answer)}
               key={answer}
               answer={answer}
             />
